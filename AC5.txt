@@ -1,0 +1,43 @@
+import random
+
+def main():
+    vida_a = 100
+    ataque_a = random.randint(10, 20)
+    defesa_a = random.randint(1, 5)
+    vida_m = random.randint(60, 80)
+    ataque_m = random.randint(20, 30)
+
+    print("Atributos iniciais:")
+    print(f"Aventureiro - Vida: {vida_a}, Ataque: {ataque_a}, Defesa: {defesa_a}")
+    print(f"Monstro - Vida: {vida_m}, Ataque: {ataque_m}")
+
+    rodada = 1
+
+    while vida_a > 0 and vida_m > 0:
+        print(f"Rodada {rodada}:")
+
+        dano_aventureiro = random.randint(1, ataque_a)
+        vida_m -= dano_aventureiro
+        print(f"O ataque do Aventureiro causou {dano_aventureiro} de dano.")
+
+        if vida_m <= 0:
+            print("O monstro morreu!")
+            break
+
+        dano_monstro = random.randint(1, ataque_m) - defesa_a
+        if dano_monstro < 0:
+            dano_monstro = 0
+        vida_a -= dano_monstro
+        print(f"O ataque do monstro causou {dano_monstro} de dano.")
+
+        if vida_a <= 0:
+            print("O aventureiro morreu!")
+
+        rodada += 1
+
+    print("Atributos finais:")
+    print(f"Aventureiro - Vida: {vida_a}, Ataque: {ataque_a}, Defesa: {defesa_a}")
+    print(f"Monstro - Vida: {vida_m}, Ataque: {ataque_m}")
+
+if __name__ == "__main__":
+    main()
